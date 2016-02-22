@@ -12,7 +12,6 @@
 </div>
 
 <div class='main'>
-  <!-- start of tutorial code ----------------------------------------------------------  -->
 
 
 <div id="transcript">&nbsp;</div>
@@ -71,20 +70,19 @@
         } else {
             
             var recognition = new webkitSpeechRecognition();
-            recognition.continuous = true;         // keep processing input until stopped
+            recognition.continuous = true;      // keep processing input until stopped
             recognition.interimResults = true;     // show interim results
             recognition.lang = 'en-uS';           // specify the language
 
 
             recognition.onstart = function() {
                 recognizing = true;
-
                 $('#instructions').html('speak slowly and clearly');
                 $('#start_button').html('click to stop');
             };
 
             recognition.onerror = function(event) {
-                document.write("there was a recognition error...");
+                document.write("there was a recognition error...dafuq");
 
             };
 
@@ -118,6 +116,7 @@
                 // update the page
                 if(finalTranscript.length > 0) {
                     $('#transcript').html(rSpeech);
+//                    $('#transcript').html(finalTranscript);
                     recognition.stop();
                     var voices = new SpeechSynthesisUtterance(rSpeech);
                     speechSynthesis.speak(voices);
